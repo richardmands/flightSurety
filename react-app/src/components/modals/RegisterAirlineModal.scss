@@ -1,0 +1,47 @@
+.RegisterAirlineModal {
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px auto 10px;
+  }
+
+  .button {
+    border: none;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    height: 44px;
+    outline: none;
+    text-align: center;
+    transition: all 0.3s linear;
+    width: 200px;
+
+    &:first-child {
+      margin-right: 10px;
+    }
+    
+    &:hover,
+    &:focus {
+      opacity: 0.8;
+    }
+
+    &.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    span {
+      margin: auto;
+      user-select: none;
+    }
+
+    &.close {
+      background-color: lightcoral;
+    }
+
+    &.buy {
+      background-color: yellowgreen;
+    }
+  }
+}
+

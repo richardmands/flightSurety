@@ -1,0 +1,60 @@
+.AirlinesContainer {
+  .Airlines {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 5px 20px;
+    width: 100%;
+
+
+    .yourAirlines {
+      display: flex;
+      flex-direction: column;
+      margin: 0 10px 10px 0;
+    
+      .airlineCard {
+        margin: 10px auto;
+      }
+   
+      .airlineStatus {
+        height: auto;
+        margin: 0 auto auto;
+        padding: 10px;
+      }
+    }
+
+    .airlineCard {
+      background-color: lightcoral;
+      border: 1px solid lightcoral;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      height: 50px;
+      margin: 0 10px 10px 0;
+      pointer-events: none;
+      transition: all 0.4s;
+      width: 200px;
+        
+      &.available {
+        background-color: lightslategrey;
+        border: 1px solid lightslategray;
+        pointer-events: all; 
+      }
+        
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+
+      span {
+        margin: auto;
+        user-select: none;
+      }
+        
+    }
+  }
+
+}
+
