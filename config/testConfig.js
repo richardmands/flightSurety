@@ -1,7 +1,6 @@
 
 var FlightSuretyApp = artifacts.require("FlightSuretyApp");
 var FlightSuretyData = artifacts.require("FlightSuretyData");
-var BigNumber = require('bignumber.js');
 
 var Config = async function(accounts) {
     const airlineCodes = [
@@ -32,7 +31,6 @@ var Config = async function(accounts) {
     let owner = accounts[0];
 
     let flightSuretyData = await FlightSuretyData.new();
-    console.log("🚀 ~ flightSuretyData", flightSuretyData.address)
     let flightSuretyApp = await FlightSuretyApp.new(flightSuretyData.address, airlineCodes[0]);
     
     return {

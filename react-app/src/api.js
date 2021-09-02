@@ -1,6 +1,7 @@
 import axios from "axios"
 
 const serverURL = process.env.REACT_APP_API_URL
+console.log("🚀 ~ serverURL", serverURL)
 
 export async function checkIsConnectedToAPI({ onSuccess, onFailure }) {
   return axios(`${serverURL}/api/status`, {

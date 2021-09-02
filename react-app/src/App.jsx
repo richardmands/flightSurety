@@ -51,10 +51,8 @@ function App() {
   )
 
   const account = (accounts && accounts[0]) || ""
-  console.log("🚀 ~ account", account)
 
   const [shouldUpdate, setShouldUpdate] = useState(false)
-  console.log("🚀 ~ shouldUpdate", shouldUpdate)
   const [instance, contractURI] = useContract({
     web3,
     smartContract: FlightSuretyApp,
@@ -109,6 +107,7 @@ function App() {
       }
     }
 
+    console.log("Bojack")
     if (account && shouldUpdate) {
       getStatus({
         instance,
