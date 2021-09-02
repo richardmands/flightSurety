@@ -4,29 +4,37 @@ This repository contains Smart Contract code in Solidity (using Truffle), tests 
 
 ## App deployed on Netlify
 https://flightsurety.netlify.app/
-## Repo for server deployed to heroku
+## Server deployed to Heroku from separate repo
 https://flightsuretyserver.herokuapp.com/
 
 https://github.com/richardmands/flightSuretyServer
-## See contract on Rinkeby
-https://rinkeby.etherscan.io/address/0x1b4D8b9bb36C5EDF0580ADF50E73FF255e3dd8d3
-## Contract deployment transaction
-https://rinkeby.etherscan.io/tx/0x0e9a4b293e9aebebce03d765c7d823a2d84971a4d5464f025fa9125f48f352ba
+## See App Contract on Rinkeby
+https://rinkeby.etherscan.io/address/0xe3b63cac781d93233046e0df7cda01d172823cba
+## App Contract deployment transaction
+https://rinkeby.etherscan.io/tx/0x132734dde18f81780713e62dcf5b69fe47e4cf64a23d389544a013d9df9cd4d0
+## See Data Contract on Rinkeby
+https://rinkeby.etherscan.io/address/0xE4b4C3FD06c3BB63D994027075cB4Ba7DF91CDEb
+## Data Contract deployment transaction
+https://rinkeby.etherscan.io/tx/0x6a7ae32fd29d57e66cb86fde7e09a0952f0eae1aa7f0030db1282176d5fb0402
 
 ## App Summary
-You can :
-- Assign yourself roles.
-- Carry out actions on crops depending on your role and whether you own the crop in question.
-- See details of a crop.
-- See the full transaction history of the contract.
-- Transfer stars to another address.
-- Put stars up for sale.
-- Buy stars that are available for sale.
-- Options change depending on whether you are the owner of the star that is listed.
+Registered and Paid airlines can:
+- Nominate addresses as owners of airlines
+- Request the contract be turned on or off
+
+Registered airlines can:
+- Fund their airline
+
+All users can:
+- Request a flight be registered as available for purchasing insurance
+- Purchase insurance
+- Check the status of their flight
+- If the flight status is returned as 'LATE AIRLINE', can request a refund
 
 ## Running the app
 - Run Ganache CLI or `truffle develop`
 - Pull down the code from GitHub
+
 ### Contracts
 - Run `truffle compile` and `truffle migrate` commands from the root directory
 

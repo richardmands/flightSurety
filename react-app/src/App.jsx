@@ -51,8 +51,10 @@ function App() {
   )
 
   const account = (accounts && accounts[0]) || ""
+  console.log("🚀 ~ account", account)
 
   const [shouldUpdate, setShouldUpdate] = useState(false)
+  console.log("🚀 ~ shouldUpdate", shouldUpdate)
   const [instance, contractURI] = useContract({
     web3,
     smartContract: FlightSuretyApp,
@@ -68,6 +70,7 @@ function App() {
   const [contractStatus, setContractStatus] = useState(false)
   const [contractBalance, setContractBalance] = useState("0")
   const [APIStatus, setAPIStatus] = useState("off")
+  console.log("🚀 ~ APIStatus", APIStatus)
   const [registerdOraclesCount, setRegisteredOracleCount] = useState(0)
   const [airlines, setAirlines] = useState(null)
   const [flights, setFlights] = useState(null)
