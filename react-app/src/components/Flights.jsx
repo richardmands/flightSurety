@@ -102,7 +102,9 @@ const Flights = ({
                       return (
                         <td
                           className={`button buy ${
-                            flight.active ? "" : "disabled"
+                            flight.active && !flight.statusCode === "20"
+                              ? ""
+                              : "disabled"
                           }`}
                         >
                           <span
