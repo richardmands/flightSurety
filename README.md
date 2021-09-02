@@ -69,3 +69,7 @@ All users can:
 - Create React App. Used to provide a great starting point for the UI. As a Senior Front-End Developer who works daily with React, this is a great tool for getting a modern Front-End up and running quickly.
 
 - Ganache. Used for local development before deploying my contracts to the Rinkeby Test Network. Used with Ganache UI as it provides useful real-time updates on transactions.
+
+## Notes for Reviewer
+- I reduced the amount needed to fund an airline from 10 Ether to 1 Ether to save on Testnet funds.
+- I did the same for registering as an Oracle

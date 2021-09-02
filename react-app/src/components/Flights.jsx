@@ -99,10 +99,12 @@ const Flights = ({
                     }
 
                     if (flight.active && flight.registered) {
+                      console.log("🚀 ~ flight", flight)
                       return (
                         <td
                           className={`button buy ${
-                            flight.active && !flight.statusCode === "20"
+                            flight.active &&
+                            (!flight.statusCode || flight.statusCode !== "20")
                               ? ""
                               : "disabled"
                           }`}
