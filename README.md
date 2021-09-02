@@ -3,7 +3,11 @@ My Version of Udacity Flight Surety App
 This repository contains Smart Contract code in Solidity (using Truffle), tests (also using Truffle), dApp scaffolding (React) and server app scaffolding (Express).
 
 ## App deployed on Netlify
-https://coffeesupplychain.netlify.app/
+https://flightsurety.netlify.app/
+## Repo for server deployed to heroku
+https://flightsuretyserver.herokuapp.com/
+
+https://github.com/richardmands/flightSuretyServer
 ## See contract on Rinkeby
 https://rinkeby.etherscan.io/address/0x1b4D8b9bb36C5EDF0580ADF50E73FF255e3dd8d3
 ## Contract deployment transaction

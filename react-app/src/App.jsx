@@ -392,7 +392,7 @@ function App() {
           API: {`${APIStatus === "on" ? "Operational" : "Not Operational"}`}
           {APIStatus === "on"
             ? ` (${registerdOraclesCount} Oracles)`
-            : " (API might be waking up. Please reload.)"}
+            : " (Server might be waking up. Please reload)"}
         </div>
       </div>
 
