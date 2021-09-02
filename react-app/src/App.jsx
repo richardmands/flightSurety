@@ -304,7 +304,7 @@ function App() {
         <p className="explanation">
           See the code on{" "}
           <a
-            href="https://github.com/richardmands/supplyChain"
+            href="https://github.com/richardmands/flightSurety"
             target="_blank"
             rel="noreferrer"
           >
