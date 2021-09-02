@@ -68,7 +68,6 @@ function App() {
   const [contractStatus, setContractStatus] = useState(false)
   const [contractBalance, setContractBalance] = useState("0")
   const [APIStatus, setAPIStatus] = useState("off")
-  console.log("🚀 ~ APIStatus", APIStatus)
   const [registerdOraclesCount, setRegisteredOracleCount] = useState(0)
   const [airlines, setAirlines] = useState(null)
   const [flights, setFlights] = useState(null)
@@ -107,7 +106,6 @@ function App() {
       }
     }
 
-    console.log("Bojack")
     if (account && shouldUpdate) {
       getStatus({
         instance,
