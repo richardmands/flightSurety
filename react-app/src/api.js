@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const serverURL = "HTTP://localhost:3333"
+const serverURL = process.env.REACT_APP_API_URL
 
 export async function checkIsConnectedToAPI({ onSuccess, onFailure }) {
   return axios(`${serverURL}/api/status`, {

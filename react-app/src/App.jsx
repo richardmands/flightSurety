@@ -26,6 +26,7 @@ import {
   registerAirline,
   approveAirline,
   changeStatus,
+  registerOracle,
 } from "./contractHelpers"
 import BuyInsuranceModal from "./components/modals/BuyInsuranceModal"
 import RegisterAirlineModal from "./components/modals/RegisterAirlineModal"
@@ -66,7 +67,7 @@ function App() {
 
   const [contractStatus, setContractStatus] = useState(false)
   const [contractBalance, setContractBalance] = useState("0")
-  const [APIStatus, setAPIStatus] = useState(false)
+  const [APIStatus, setAPIStatus] = useState("off")
   const [registerdOraclesCount, setRegisteredOracleCount] = useState(0)
   const [airlines, setAirlines] = useState(null)
   const [flights, setFlights] = useState(null)
@@ -82,7 +83,12 @@ function App() {
           }
         )
 
-        setAPIStatus(connectedToAPI)
+        if (connectedToAPI) {
+          setAPIStatus("on")
+        } else {
+          setAPIStatus("off")
+        }
+
         setRegisteredOracleCount(oracleCount)
 
         if (connectedToAPI) {
@@ -144,6 +150,21 @@ function App() {
     fundAirline({
       instance,
       airline,
+      id: account,
+      toWei: web3.utils.toWei,
+      gasLimit,
+      gasPrice,
+      onCompletion: () => {
+        setLoading(false)
+        setShouldUpdate(true)
+      },
+    })
+  }
+
+  function handleRegisterOracle() {
+    setLoading(true)
+    registerOracle({
+      instance,
       id: account,
       toWei: web3.utils.toWei,
       gasLimit,
@@ -308,7 +329,7 @@ function App() {
           </p>
         )}
 
-        {APIStatus ? (
+        {APIStatus === "on" ? (
           <p className="explanation">
             Connected to API
             <br />
@@ -365,11 +386,13 @@ function App() {
         </div>
         <div
           className={`apiStatus ${
-            APIStatus ? "operational" : "notOperational"
+            APIStatus === "on" ? "operational" : "notOperational"
           }`}
         >
-          API: {`${APIStatus ? "Operational" : "Not Operational"}`}
-          {APIStatus ? ` (${registerdOraclesCount} Oracles)` : ""}
+          API: {`${APIStatus === "on" ? "Operational" : "Not Operational"}`}
+          {APIStatus === "on"
+            ? ` (${registerdOraclesCount} Oracles)`
+            : " (API might be waking up. Please reload.)"}
         </div>
       </div>
 
@@ -407,6 +430,7 @@ function App() {
               buyInsurance={handleBuyInsurance}
               checkStatus={handleCheckFlightStatus}
               getRefund={handleGetRefund}
+              registerOracle={handleRegisterOracle}
               account={account}
               fromWei={web3.utils.fromWei}
             />

@@ -88,7 +88,7 @@ export async function fundAirline({
   try {
     await instance.methods
       .fundAirline(airline)
-      .send({ from: id, value: toWei("10", "ether"), gasPrice, gasLimit })
+      .send({ from: id, value: toWei("1", "ether"), gasPrice, gasLimit })
   } catch (error) {
     console.log("🚀 ~ error", error)
   }
@@ -146,6 +146,29 @@ export async function buyInsurance({
   try {
     const value = toWei(amount.toString(), "ether")
     await instance.methods.buyInsurance(flight).send({
+      from: id,
+      value,
+      gasPrice,
+      gasLimit,
+    })
+  } catch (error) {
+    console.log("🚀 ~ error", error)
+  }
+
+  onCompletion()
+}
+
+export async function registerOracle({
+  instance,
+  id,
+  toWei,
+  gasLimit,
+  gasPrice,
+  onCompletion,
+}) {
+  try {
+    const value = toWei("0.1", "ether")
+    await instance.methods.registerOracle().send({
       from: id,
       value,
       gasPrice,

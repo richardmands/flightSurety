@@ -1,62 +1,84 @@
-.Flights {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  width: 100%;
-
-  .flightsTable {
+.FlightsContainer {
+  .Flights {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
     width: 100%;
 
-    thead tr {
-      margin-bottom: 30px;
-    }
+    .flightsTable {
+      width: 100%;
 
-    tbody tr {
-      background-color: rgb(233, 255, 233);
-      border-bottom: 1px solid green;
-      border-radius: 5px;
-      padding: 5px;
-
-      &:nth-child(odd) {
-        background-color: rgb(255, 238, 238);
+      thead tr {
+        margin-bottom: 30px;
       }
-    }
 
-    th,
-    td {
-      margin: 10px;
-      padding: 10px;
+      tbody tr {
+        background-color: rgb(233, 255, 233);
+        border-bottom: 1px solid green;
+        border-radius: 5px;
+        padding: 5px;
 
-      &.text {
-        padding-left: 15px;
+        &:nth-child(odd) {
+          background-color: rgb(255, 238, 238);
+        }
       }
-    }
+
+      th,
+      td {
+        margin: 10px;
+        padding: 10px;
+
+        &.text {
+          padding-left: 15px;
+        }
+      }
         
-    .button {
-      border-radius: 5px;
-      color: white;
-      cursor: pointer;
-      display: flex;
-      text-align: center;
+      .button {
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        text-align: center;
 
-      &.disabled {
-        opacity: 0.5;
-        pointer-events: none;
+        &.disabled {
+          opacity: 0.5;
+          pointer-events: none;
+        }
+
+        span {
+          margin: auto;
+          user-select: none;
+        }
+
+        &.register {
+          background-color: lightseagreen;
+        }
+
+        &.buy {
+          background-color: yellowgreen;
+        }
+
       }
+    }
 
-      span {
-        margin: auto;
-        user-select: none;
-      }
+  
+  }
 
-      &.register {
-        background-color: lightseagreen;
-      }
+  .registerOracle {
+    background-color: lightseagreen;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    height: 50px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    text-align: center;
+    width: 200px;
 
-      &.buy {
-        background-color: yellowgreen;
-      }
-
+    span {
+      margin: auto;
+      user-select: none;
     }
   }
 

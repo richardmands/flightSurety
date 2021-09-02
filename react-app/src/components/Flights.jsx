@@ -9,6 +9,7 @@ const Flights = ({
   getRefund,
   account,
   fromWei,
+  // registerOracle,
 }) => {
   const sortedFlights = flights?.sort((a, b) =>
     a?.time?.toLowerCase().localeCompare(b?.time?.toLowerCase())
@@ -22,8 +23,19 @@ const Flights = ({
   )
 
   return (
-    <>
+    <div className="FlightsContainer">
       <h2>Buy Flight Insurance</h2>
+      {/* <h3>Register Oracle</h3>
+      <button
+        type="button"
+        className="button registerOracle"
+        onClick={registerOracle}
+        onKeyPress={registerOracle}
+        tabIndex={0}
+      >
+        <span>Register</span>
+      </button> */}
+
       <h3>Available Flights</h3>
       <h5>Register a flight to make it available for purchase.</h5>
       <h5>
@@ -34,6 +46,7 @@ const Flights = ({
         If the flight status comes up as LATE AIRLINE, you'll be able to collect
         a refund at 1.5 times what you paid.
       </h5>
+
       {activeFlights?.length > 0 ? (
         <div className="Flights">
           <table className="flightsTable">
@@ -252,7 +265,7 @@ const Flights = ({
       ) : (
         <div className="Flights">No Flights...</div>
       )}
-    </>
+    </div>
   )
 }
 
