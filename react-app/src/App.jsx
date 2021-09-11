@@ -376,10 +376,15 @@ function App() {
       <div className="statuses">
         <div
           className={`contractStatus ${
-            contractStatus ? "operational" : "notOperational"
+            contractStatus || instance ? "operational" : "notOperational"
           }`}
         >
-          Contract: {`${contractStatus ? "Operational" : "Not Operational"}`}
+          Contract:{" "}
+          {`${
+            contractStatus
+              ? "Operational"
+              : "Not Operational || Not logged in to MetaMask on Rinkeby"
+          }`}
           {contractStatus
             ? ` (${web3.utils.fromWei(contractBalance, "ether")} Ether)`
             : ""}
@@ -392,7 +397,7 @@ function App() {
           API: {`${APIStatus === "on" ? "Operational" : "Not Operational"}`}
           {APIStatus === "on"
             ? ` (${registerdOraclesCount} Oracles)`
-            : " (Server might be waking up. Please reload)"}
+            : " (Heroku server might be waking up. Please reload)"}
         </div>
       </div>
 
