@@ -18,7 +18,6 @@ function useContract({
         const networkId = await web3.eth.net.getId()
         const deployedContract = smartContract.networks[networkId]
         if (!deployedContract) {
-          setContract(null)
           onFailure()
         } else {
           const instance =
