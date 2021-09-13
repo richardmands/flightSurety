@@ -385,7 +385,7 @@ function App() {
               ? "Operational"
               : "Not Operational || Not logged in to MetaMask on Rinkeby"
           }`}
-          {contractStatus
+          {instance && contractStatus
             ? ` (${web3.utils.fromWei(contractBalance, "ether")} Ether)`
             : ""}
         </div>
