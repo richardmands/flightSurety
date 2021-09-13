@@ -59,10 +59,14 @@ function App() {
     gasPrice,
     gasLimit,
     onSuccess: () => {
+      console.log("🚀 ~ onSuccess")
       setShouldUpdate(true)
       makeToast(`...${account.substr(-4)} connected to Smart Contract`, ":)")
     },
-    onFailure: () => makeToast("Failed to connect to Smart Contract :("),
+    onFailure: () => {
+      console.log("🚀 ~ onFailure")
+      makeToast("Failed to connect to Smart Contract :(")
+    },
   })
 
   const [contractStatus, setContractStatus] = useState(false)
@@ -71,6 +75,24 @@ function App() {
   const [registerdOraclesCount, setRegisteredOracleCount] = useState(0)
   const [airlines, setAirlines] = useState(null)
   const [flights, setFlights] = useState(null)
+
+  useEffect(() => {
+    async function checkAPI() {
+      const { connectedToAPI, oracleCount } = await API.checkIsConnectedToAPI({
+        onSuccess: () => {},
+        onFailure: () => {},
+      })
+
+      if (connectedToAPI) {
+        setAPIStatus("on")
+        setRegisteredOracleCount(oracleCount)
+      } else {
+        setAPIStatus("off")
+      }
+    }
+
+    checkAPI()
+  }, [])
 
   useEffect(() => {
     async function updateAPI() {
