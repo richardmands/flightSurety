@@ -376,12 +376,12 @@ function App() {
       <div className="statuses">
         <div
           className={`contractStatus ${
-            contractStatus || instance ? "operational" : "notOperational"
+            instance && contractStatus ? "operational" : "notOperational"
           }`}
         >
           Contract:{" "}
           {`${
-            contractStatus
+            instance && contractStatus
               ? "Operational"
               : "Not Operational || Not logged in to MetaMask on Rinkeby"
           }`}
@@ -394,14 +394,24 @@ function App() {
             APIStatus === "on" ? "operational" : "notOperational"
           }`}
         >
-          API: {`${APIStatus === "on" ? "Operational" : "Not Operational"}`}
+          <span>
+            <a
+              href="https://flightsuretyserver.herokuapp.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              API
+            </a>{" "}
+            {`: `}
+          </span>
+          {`${APIStatus === "on" ? "Operational" : "Not Operational"}`}
           {APIStatus === "on"
             ? ` (${registerdOraclesCount} Oracles)`
             : " (Heroku server might be waking up. Please reload)"}
         </div>
       </div>
 
-      {web3 && accounts?.length ? (
+      {web3 && instance && accounts?.length ? (
         <>
           <div className="section">
             <ContractControl

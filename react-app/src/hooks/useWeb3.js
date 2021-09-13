@@ -11,6 +11,16 @@ function useWeb3(gp, gl) {
     new Promise((resolve, reject) => {
       // Wait for loading completion to avoid race conditions with web3 injection timing.
       window.addEventListener("load", async () => {
+        async function reloadWeb3() {
+          const web3 = new Web3(window.ethereum)
+          try {
+            await window.ethereum.enable()
+            resolve(web3)
+          } catch (error) {
+            reject(error)
+          }
+          setConnectedWeb3(web3)
+        }
         try {
           if (window.ethereum) {
             const web3 = new Web3(window.ethereum)
@@ -18,28 +28,25 @@ function useWeb3(gp, gl) {
             resolve(web3)
 
             window.ethereum.on("accountsChanged", async (data) => {
-              const newWeb3 = new Web3(window.ethereum)
-              try {
-                await window.ethereum.enable()
-                console.log("Ethereum Enabled!")
-                resolve(web3)
-              } catch (error) {
-                reject(error)
-              }
+              console.log("🚀 ~ accountsChanged")
+              await reloadWeb3()
+
               setAccounts(data)
-              setConnectedWeb3(newWeb3)
             })
 
-            window.ethereum.on("networkChanged", async () => {
-              const newWeb3 = new Web3(window.ethereum)
-              try {
-                await window.ethereum.enable()
-                console.log("Ethereum Enabled!")
-                resolve(web3)
-              } catch (error) {
-                reject(error)
-              }
-              setConnectedWeb3(newWeb3)
+            window.ethereum.on("chainChanged", async () => {
+              console.log("🚀 ~ chainChanged")
+              await reloadWeb3()
+            })
+
+            window.ethereum.on("disconnect", async () => {
+              console.log("🚀 ~ disconnect")
+              await reloadWeb3()
+            })
+
+            window.ethereum.on("connect", async () => {
+              console.log("🚀 ~ connect")
+              await reloadWeb3()
             })
           }
         } catch (error) {
@@ -51,13 +58,13 @@ function useWeb3(gp, gl) {
   useEffect(() => {
     async function prepareWeb3() {
       const web3 = await getWeb3()
-      setConnectedWeb3(web3)
-
       const userAccounts = await web3.eth.getAccounts()
-      setAccounts(userAccounts)
-
-      setGasPrice(web3 && Number(web3.utils.toWei(gp.amount, gp.unit)))
-      setGasLimit(web3 && Number(web3.utils.toWei(gl.amount, gl.unit)))
+      if (userAccounts.length) {
+        setConnectedWeb3(web3)
+        setAccounts(userAccounts)
+        setGasPrice(web3 && Number(web3.utils.toWei(gp.amount, gp.unit)))
+        setGasLimit(web3 && Number(web3.utils.toWei(gl.amount, gl.unit)))
+      }
     }
 
     if (!connectedWeb3) {
